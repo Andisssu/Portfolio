@@ -41,7 +41,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import ufacImg from '@/assets/img/ufac.PNG'
+import ufacImg from '@/assets/img/ufac.png'
 import freelancerImg from '@/assets/img/freelancer.png'
 
 const selected = ref('UFAC')
