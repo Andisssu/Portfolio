@@ -5,18 +5,20 @@
             <div class="barrax"></div>
         </div>
 
-        <div class="flex flex-row items-start justify-center gap-10">
+        <div class="flex flex-col md:flex-row items-start justify-center gap-6 md:gap-10">
 
-            <div class="barra"></div>
-            
+            <!-- Barra lateral (visível apenas em telas médias ou maiores) -->
+            <div class="barra hidden md:block"></div>
+
             <!-- Botões laterais -->
-            <div class="flex flex-col gap-4">
+            <div class="flex flex-row flex-wrap gap-4 content-center justify-center w-full md:w-auto md:flex-col md:items-center"
+                id="options">
                 <button v-for="option in options" :key="option.id" @click="selected = option.id" :class="[
                     'flex items-center px-4 py-3 rounded-md border hover:scale-[1.03] transition-all',
                     selected === option.id ? 'bg-[#0098df] border-[#47c5ff] text-white shadow-md' : 'bg-transparent border-white text-white'
                 ]">
-                <img :src="option.icon" alt="Ícone" class="w-6 h-6 mr-2 rounded-sm" />
-                <span>{{ option.label }}</span>
+                    <img :src="option.icon" alt="Ícone" class="w-6 h-6 mr-2 rounded-sm" />
+                    <span>{{ option.label }}</span>
                 </button>
             </div>
 
@@ -47,6 +49,7 @@ import freelancerImg from '@/assets/img/freelancer.png'
 const selected = ref('UFAC')
 
 const options = [
+    { id: 'wbacademy', label: 'WebAcademy', icon: ufacImg },
     { id: 'UFAC', label: 'UFAC', icon: ufacImg },
     { id: 'freelancer', label: 'Freelancer', icon: freelancerImg },
 ]
@@ -56,11 +59,24 @@ const content = {
         title: 'Sistema de Grenciamento do Hospital Universitario - Full Stack | NTI - UFAC',
         period: 'Março 2024 a Março 2025',
         details: [
-            'Desenvolvimento de Interfaces e criação de paginas com Django;',
+            'Desenvolvimento de Interfaces de usuarios e criação de paginas web com Django;',
             'Desenvolvimento e ajustes no backend com Framework Django;',
             'Criação e Ajustes no banco de dados;',
             'Implementação de funções de autenticação e autorização, impressão de pdf, restrição de acesso por usuario entre outros...;',
             'Tecnologias: JavaScript, HTML, CSS, Django, SQLite, Figma;',
+        ]
+    },
+    wbacademy: {
+        title: 'Sistema de Gerenciamento de Projetos e Setores para SEAGRI - Front-end | WebAcademy',
+        period: '2024',
+        details: [
+            'Desenvolvimento de interfaces de usauarios e criação das paginas web;',
+            'Componentes para cadastros e istagem de ntidades do sistema;',
+            'Estilização e suporte a resposividade',
+            'Integração com Back-end e interceptação de requisições HTTP com Httpinterceptor;',
+            'Configuração de rotas e navegação entre as paginas utilizando Angular Router;',
+            'Desenvolviemento do prototipo de alta fidelidade do sistema utilizando Figma;',
+            'Tecnologias: Java, Angular, TypeScript, Spring Boot, HTML, CSS, MySQL, Figma;',
         ]
     },
     freelancer: {
@@ -96,5 +112,4 @@ const content = {
     width: 2px;
     background: linear-gradient(to bottom, #00000000, #47c5ff 50%, #00000000);
 }
-
 </style>

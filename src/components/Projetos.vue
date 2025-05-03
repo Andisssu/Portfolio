@@ -16,10 +16,10 @@
                 <div class="p-6">
                     <h5
                         class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                        Sistema de Gestão da SEAGRI/DEAGRO
+                        Sistema de Gerenciamento de Projetos e Setores para SEAGRI
                     </h5>
                     <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
-                        Departamento de Agronegócio
+                        Secretaria de estado da Agricultura - SEAGRI
                     </p>
                 </div>
                 <div class="p-6 pt-0">
@@ -42,7 +42,7 @@
                         Sistema de Gestão de Bolsistas do NAI
                     </h5>
                     <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
-                        Estágio Supervisionado - UFAC
+                        Estágio Supervisionado | NAI - UFAC
                     </p>
                 </div>
                 <div class="p-6 pt-0">
@@ -62,10 +62,10 @@
                 <div class="p-6">
                     <h5
                         class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-                        Sistema de Gerenciamento de Atendimentos
+                        Sistema de Grenciamento do Hospital Universitario
                     </h5>
                     <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
-                        Hospital universitário - UFAC
+                        Hospital universitário | NTI - UFAC
                     </p>
                 </div>
                 <div class="p-6 pt-0">
