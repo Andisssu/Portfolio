@@ -65,7 +65,7 @@ onMounted(() => {
                         trigger: "#corpo",
                         start: "top 70%",
                         end: "bottom 70%",
-                        scrub: true,
+                        scrub: false,
                     }
                 });
             }
