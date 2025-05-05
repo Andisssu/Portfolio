@@ -1,7 +1,7 @@
 <template>
   <div class="header h-screen w-full">
 
-    <div class="flex items-center justify-between p-4 text-white" id="navbar">
+    <div class="flex items-center justify-between p-4 text-white top-0 left-0 w-full z-100 fixed" id="navbar">
       <div class="flex items-center gap-2">
         <img src="@/assets/img/dev.png" alt="devicon" class="w-10 h-10" />
         <h1 class="text-4xl font-bold">Anderson</h1>
@@ -11,14 +11,14 @@
       <div class="menu-container">
         <!-- Checkbox controlador -->
         <input type="checkbox" id="burger" class="hidden" />
-      
+
         <!-- Botão hamburguer -->
         <label class="burger" for="burger">
           <span></span>
           <span></span>
           <span></span>
         </label>
-      
+
         <!-- Lista de navegação -->
         <div class="menu-list">
           <ul>
@@ -31,8 +31,8 @@
           </ul>
         </div>
       </div>
-      
-      
+
+
 
       <!-- Menu de navegação -->
       <nav class="relative hidden md:block">
@@ -46,7 +46,7 @@
       </nav>
     </div>
 
-    <section class="flex flex-col md:flex-row items-center justify-between h-screen  p-24">
+    <section class="flex flex-col md:flex-row items-center justify-between h-screen p-24">
 
       <!-- Informações de Perfil -->
       <div class="text-center md:text-left">
@@ -116,9 +116,11 @@
 }
 
 #navbar {
-  background-color: #250e3100;
-  box-shadow: 0px -20px 20px 10px black;
-  border-radius: 0 0 15px 15px;
+  background: rgb(0 0 0 / 10%);
+  box-shadow: 0 8px 32px 0 rgb(0 0 0 / 37%);
+  backdrop-filter: blur(6.5px);
+  -webkit-backdrop-filter: blur(6.5px);
+  border-radius: 0 0 10px 10px;
 }
 
 /* botão */
@@ -162,18 +164,18 @@
 }
 
 /* animação do botão quando checkbox está marcado */
-#burger:checked + .burger span:nth-of-type(1) {
+#burger:checked+.burger span:nth-of-type(1) {
   transform: rotate(45deg);
   top: 0px;
   left: 5px;
 }
 
-#burger:checked + .burger span:nth-of-type(2) {
+#burger:checked+.burger span:nth-of-type(2) {
   width: 0%;
   opacity: 0;
 }
 
-#burger:checked + .burger span:nth-of-type(3) {
+#burger:checked+.burger span:nth-of-type(3) {
   transform: rotate(-45deg);
   top: 28px;
   left: 5px;
@@ -187,7 +189,8 @@
 .menu-list {
   display: none;
   position: absolute;
-  top: 100%; /* logo abaixo do botão */
+  top: 100%;
+  /* logo abaixo do botão */
   right: 0;
   background: #1a1a1a;
   color: white;
@@ -198,22 +201,19 @@
 }
 
 /* mostra menu quando checkbox está checado */
-#burger:checked ~ .menu-list {
+#burger:checked~.menu-list {
   display: block;
 }
 
 /* esconde menu e botão em telas maiores */
 @media (min-width: 768px) {
+
   .burger,
   #burger,
   .menu-list {
     display: none !important;
   }
 }
-
-
-
-
 </style>
 
 <script setup>
