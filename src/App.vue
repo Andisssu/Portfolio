@@ -6,23 +6,26 @@ import Habilidades from './components/Habilidades.vue';
 import Experiencia from './components/Experiencia.vue';
 import Projetos from './components/Projetos.vue';
 import Contato from './components/Contato.vue';
+import Footer from './components/Footer.vue';
 </script>
 
 <template>
   <div id="app">
 
-    <Header/>
-    <Sobre/>
-    <Habilidades/>
-    <Experiencia/>
-    <Projetos/>
-    <Contato/>
+    <MeshBackground />
+    <Header />
 
-    <MeshBackground/>
+    <div class="corpo">
+      <Sobre />
+      <Habilidades />
+      <Experiencia />
+      <Projetos />
+      <Contato />
+    </div>
+
+    <Footer />
 
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

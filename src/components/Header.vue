@@ -1,5 +1,91 @@
 <template>
-  <div class="header h-screen w-full">
+  <div class="header h-screen w-full" id="perfil">
+
+    <div class="mobile-menu-container fixed top-0 right-0 pt-3 h-screen shadow-lg sm:hidden z-[200]">
+      <!-- Checkbox controlador (hidden) -->
+      <input type="checkbox" id="burger" class="hidden" v-model="isMenuOpen" />
+
+      <!-- Botão hamburguer -->
+      <label
+        class="burger-button flex flex-col justify-center items-center w-12 h-12 rounded-full cursor-pointer z-50 transition-all duration-300"
+        :class="{ 'is-active': isMenuOpen }" for="burger">
+        <span class="burger-line transition-all duration-300 ease-in-out"></span>
+        <span class="burger-line transition-all duration-300 ease-in-out"></span>
+        <span class="burger-line transition-all duration-300 ease-in-out"></span>
+      </label>
+
+      <!-- Overlay de fundo -->
+      <div class="menu-overlay fixed inset-0 bg-[#0a0c14] transition-all duration-500 backdrop-blur-md z-40"
+        :class="{ 'opacity-90': isMenuOpen, 'opacity-0 pointer-events-none': !isMenuOpen }" @click="isMenuOpen = false">
+      </div>
+
+      <!-- Menu de navegação -->
+      <div
+        class="menu-panel fixed inset-y-0 right-0 w-64 sm:w-80 bg-gradient-to-br from-[#121a29] to-[#162339] shadow-xl z-40 transition-all duration-500 ease-in-out transform border-l border-[#ffffff15]"
+        :class="{ 'translate-x-0': isMenuOpen, 'translate-x-full': !isMenuOpen }">
+        <div class="menu-content flex flex-col h-full p-8">
+          <!-- Logo/Branding no topo do menu -->
+          <div class="menu-header mb-12 pt-4">
+            <div class="flex items-center gap-3">
+              <div
+                class="w-10 h-10 rounded-full bg-gradient-to-br from-[#47c5ff] to-[#0098df] flex items-center justify-center text-white font-bold text-lg">
+                AD
+              </div>
+              <h3 class="text-xl font-bold text-white">Anderson Dantas</h3>
+            </div>
+          </div>
+
+          <!-- Lista de navegação -->
+          <nav class="menu-nav flex-grow">
+            <ul class="space-y-1">
+              <li v-for="(item, index) in menuItemsmobi" :key="index" :style="{ transitionDelay: `${index * 50}ms` }"
+                class="menu-item">
+                <a :href="item.href"
+                  class="menu-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:text-white transition-all duration-300 group"
+                  :class="{ 'active-link': item.active }" @click="isMenuOpen = false">
+                  <div
+                    class="w-8 h-8 rounded-full bg-[#ffffff10] flex items-center justify-center group-hover:bg-[#47c5ff20] transition-all duration-300">
+                    <component :is="item.icon" class="w-4 h-4 text-[#47c5ff]" />
+                  </div>
+                  <span>{{ item.label }}</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Footer do menu -->
+          <div class="menu-footer pt-6 border-t border-[#ffffff15]">
+            <div class="flex justify-center space-x-4">
+              <a href="#" class="social-icon-link">
+                <div
+                  class="w-10 h-10 rounded-full bg-[#121a29] border border-[#ffffff15] hover:border-[#47c5ff40] flex items-center justify-center transition-all duration-300 hover:bg-[#47c5ff20]">
+                  <img src="@/assets/img/github.png" alt="GitHub" class="w-5 h-5 object-contain" />
+                </div>
+              </a>
+              <a href="#" class="social-icon-link">
+                <div
+                  class="w-10 h-10 rounded-full bg-[#121a29] border border-[#ffffff15] hover:border-[#47c5ff40] flex items-center justify-center transition-all duration-300 hover:bg-[#47c5ff20]">
+                  <img src="@/assets/img/linkedin.png" alt="LinkedIn" class="w-5 h-5 object-contain" />
+                </div>
+              </a>
+              <a href="#" class="social-icon-link">
+                <div
+                  class="w-10 h-10 rounded-full bg-[#121a29] border border-[#ffffff15] hover:border-[#47c5ff40] flex items-center justify-center transition-all duration-300 hover:bg-[#47c5ff20]">
+                  <img src="@/assets/img/gmail.png" alt="Email" class="w-5 h-5 object-contain" />
+                </div>
+              </a>
+              <a href="#" class="social-icon-link">
+                <div
+                  class="w-10 h-10 rounded-full bg-[#121a29] border border-[#ffffff15] hover:border-[#47c5ff40] flex items-center justify-center transition-all duration-300 hover:bg-[#47c5ff20]">
+                  <img src="@/assets/img/whatsapp.png" alt="Email" class="w-5 h-5 object-contain" />
+                </div>
+              </a>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-4">© 2025 Anderson Dantas</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="flex items-center justify-between p-4 text-white top-0 left-0 w-full z-100 fixed" id="navbar">
       <div class="flex items-center gap-2">
@@ -7,42 +93,38 @@
         <h1 class="text-4xl font-bold">Anderson</h1>
       </div>
 
-      <!-- botão hamburguer + menu -->
-      <div class="menu-container">
-        <!-- Checkbox controlador -->
-        <input type="checkbox" id="burger" class="hidden" />
+      <nav class="desktop-nav fixed top-0 w-full z-40 transition-all duration-300"
+        :class="{ 'nav-scrolled': isScrolled }">
+        <div class="container mx-auto px-6">
+          <div class="flex items-center justify-end h-20">
 
-        <!-- Botão hamburguer -->
-        <label class="burger" for="burger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </label>
+            <!-- Navigation Links - Visible only on md screens and up -->
+            <div class="hidden md:block">
+              <ul class="flex space-x-1">
+                <li v-for="(item, index) in navItems" :key="index">
+                  <a :href="item.href"
+                    class="nav-link relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-300 rounded-md flex items-center"
+                    :class="{ 'active': item.active }" @click.prevent="scrollToSection(item.href)">
+                    <span>{{ item.label }}</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
 
-        <!-- Lista de navegação -->
-        <div class="menu-list">
-          <ul>
-            <li><a href="#">Perfil</a></li>
-            <li><a href="#">Sobre</a></li>
-            <li><a href="#">Habilidades</a></li>
-            <li><a href="#">Trabalhos</a></li>
-            <li><a href="#">Projetos</a></li>
-            <li><a href="#">Contato</a></li>
-          </ul>
+            <!-- Mobile Menu Button - Only visible on small screens -->
+            <div class="md:hidden">
+              <!-- This is where your hamburger menu component would be placed -->
+              <!-- <depois eu ajusto /> -->
+            </div>
+          </div>
         </div>
-      </div>
 
-
-
-      <!-- Menu de navegação -->
-      <nav class="relative hidden md:block">
-        <ul ref="menu" class="flex space-x-4 px-12 py-2 rounded-lg text-xl relative">
-          <li v-for="(item, index) in menuItems" :key="index" @mouseenter="moveIndicator(index)" class="relative">
-            <a href="#" class="hover:text-white">{{ item }}</a>
-          </li>
-        </ul>
-        <aside id="indicator" class="absolute bottom-0 h-1 bg-gray-400 rounded transition-all duration-300"
-          :style="indicatorStyle"></aside>
+        <!-- Active indicator line -->
+        <div class="active-indicator-container absolute bottom-0 left-0 w-full h-[2px] bg-transparent">
+          <div
+            class="active-indicator h-full bg-gradient-to-r from-[#47c5ff] to-[#0098df] transition-all duration-300 ease-out"
+            :style="indicatorStyle"></div>
+        </div>
       </nav>
     </div>
 
@@ -123,118 +205,403 @@
   border-radius: 0 0 10px 10px;
 }
 
-/* botão */
-.burger {
+.desktop-nav {
+  background-color: rgba(10, 12, 20, 0);
+  backdrop-filter: blur(0px);
+  transition: all 0.3s ease;
+}
+
+.nav-scrolled {
+  background-color: rgba(10, 12, 20, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
   position: relative;
-  width: 40px;
-  height: 30px;
-  background: transparent;
-  cursor: pointer;
-  display: block;
+  overflow: hidden;
 }
 
-.burger span {
-  display: block;
+.nav-link::after {
+  content: '';
   position: absolute;
-  height: 4px;
-  width: 100%;
-  background: rgb(255, 255, 255);
-  border-radius: 9px;
-  opacity: 1;
-  left: 0;
-  transform: rotate(0deg);
-  transition: .25s ease-in-out;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #47c5ff, #0098df);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
 }
 
-.burger span:nth-of-type(1) {
-  top: 0px;
-  transform-origin: left center;
+.nav-link:hover::after {
+  width: 80%;
 }
 
-.burger span:nth-of-type(2) {
-  top: 50%;
-  transform: translateY(-50%);
-  transform-origin: left center;
-}
-
-.burger span:nth-of-type(3) {
-  top: 100%;
-  transform-origin: left center;
-  transform: translateY(-100%);
-}
-
-/* animação do botão quando checkbox está marcado */
-#burger:checked+.burger span:nth-of-type(1) {
-  transform: rotate(45deg);
-  top: 0px;
-  left: 5px;
-}
-
-#burger:checked+.burger span:nth-of-type(2) {
-  width: 0%;
-  opacity: 0;
-}
-
-#burger:checked+.burger span:nth-of-type(3) {
-  transform: rotate(-45deg);
-  top: 28px;
-  left: 5px;
-}
-
-.menu-container {
-  position: relative;
-}
-
-/* menu oculto por padrão */
-.menu-list {
-  display: none;
-  position: absolute;
-  top: 100%;
-  /* logo abaixo do botão */
-  right: 0;
-  background: #1a1a1a;
+.nav-link.active {
   color: white;
-  padding: 1rem;
-  border-radius: 8px;
-  z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
 }
 
-/* mostra menu quando checkbox está checado */
-#burger:checked~.menu-list {
-  display: block;
+.nav-link.active::after {
+  width: 80%;
 }
 
-/* esconde menu e botão em telas maiores */
-@media (min-width: 768px) {
+.burger-line {
+  width: 22px;
+  height: 2px;
+  background-color: #fff;
+  margin: 3px 0;
+  border-radius: 2px;
+  transform-origin: center;
+}
 
-  .burger,
-  #burger,
-  .menu-list {
-    display: none !important;
-  }
+/* Animação do botão hamburguer para X */
+.burger-button.is-active {
+  background: rgba(71, 197, 255, 0.2);
+  border-color: rgba(71, 197, 255, 0.4);
+}
+
+.burger-button.is-active .burger-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+  width: 22px;
+}
+
+.burger-button.is-active .burger-line:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.burger-button.is-active .burger-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+  width: 22px;
+}
+
+/* Estilo dos itens do menu */
+.menu-item {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu-panel[class*="translate-x-0"] .menu-item {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Link ativo */
+.active-link {
+  background: rgba(71, 197, 255, 0.1);
+  color: white;
+  font-weight: 500;
+}
+
+.active-link .w-8 {
+  background: rgba(71, 197, 255, 0.2);
 }
 </style>
 
 <script setup>
-import { ref, reactive, onMounted, nextTick } from 'vue'
+import { ref, reactive, onMounted, nextTick, watch, computed } from 'vue'
 
-const menuItems = ['Perfil', 'Sobre', 'Habilidades', 'Trabalhos', 'Projetos', 'Contato']
-const indicatorStyle = reactive({
-  width: '0px',
-  left: '0px'
-})
-const menu = ref(null)
+// Navigation items
+const navItems = [
+  { label: 'Perfil', href: '#perfil', active: false },
+  { label: 'Sobre', href: '#sobre', active: false },
+  { label: 'Habilidades', href: '#habilidades', active: false },
+  { label: 'Expêriencia', href: '#experiencia', active: false },
+  { label: 'Projetos', href: '#projetos', active: false },
+  { label: 'Contato', href: '#contato', active: false }
+];
 
-const moveIndicator = async (index) => {
-  await nextTick()
-  const liElements = menu.value.querySelectorAll('li')
-  const target = liElements[index]
-  indicatorStyle.width = `${target.offsetWidth}px`
-  indicatorStyle.left = `${target.offsetLeft}px`
-}
+// Track scroll position for navbar background
+const isScrolled = ref(false);
+const activeSection = ref('#perfil');
+const activeElement = ref(null);
+
+// Computed style for the active indicator
+const indicatorStyle = computed(() => {
+  if (!activeElement.value) return { width: '0', transform: 'translateX(0)' };
+
+  const { width, left } = activeElement.value.getBoundingClientRect();
+  const navLeft = document.querySelector('.desktop-nav ul').getBoundingClientRect().left;
+
+  return {
+    width: `${width}px`,
+    transform: `translateX(${left - navLeft}px)`
+  };
+});
+
+// Scroll to section function
+const scrollToSection = (sectionId) => {
+  const element = document.querySelector(sectionId);
+  if (element) {
+    window.scrollTo({
+      top: element.offsetTop - 80, // Adjust for navbar height
+      behavior: 'smooth'
+    });
+
+    // Update active section
+    activeSection.value = sectionId;
+    updateActiveNavItem(sectionId);
+  }
+};
+
+// Update active nav item
+const updateActiveNavItem = (sectionId) => {
+  navItems.forEach(item => {
+    item.active = item.href === sectionId;
+    if (item.active) {
+      // Find the DOM element for this nav item
+      setTimeout(() => {
+        activeElement.value = document.querySelector(`.nav-link[href="${sectionId}"]`);
+      }, 0);
+    }
+  });
+};
+
+// Check which section is in view
+const checkActiveSection = () => {
+  const sections = navItems.map(item => item.href);
+
+  // Find the section that is currently in view
+  for (const section of sections) {
+    const element = document.querySelector(section);
+    if (element) {
+      const rect = element.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Check if the section is in view
+      if (rect.top <= windowHeight * 0.5 && rect.bottom >= windowHeight * 0.5) {
+        if (activeSection.value !== section) {
+          activeSection.value = section;
+          updateActiveNavItem(section);
+        }
+        break;
+      }
+    }
+  }
+};
+
+// Watch for changes in active section
+watch(activeSection, (newSection) => {
+  updateActiveNavItem(newSection);
+});
+
+// Estado do menu
+const isMenuOpen = ref(false);
+
+// Itens do menu com ícones
+const menuItemsmobi = [
+  {
+    label: 'Perfil',
+    href: '#perfil',
+    active: true,
+    icon: 'UserIcon'
+  },
+  {
+    label: 'Sobre',
+    href: '#sobre',
+    active: false,
+    icon: 'InfoIcon'
+  },
+  {
+    label: 'Habilidades',
+    href: '#habilidades',
+    active: false,
+    icon: 'CodeIcon'
+  },
+  {
+    label: 'Expêriencia',
+    href: '#experiencia',
+    active: false,
+    icon: 'BriefcaseIcon'
+  },
+  {
+    label: 'Projetos',
+    href: '#projetos',
+    active: false,
+    icon: 'FolderIcon'
+  },
+  {
+    label: 'Contato',
+    href: '#contato',
+    active: false,
+    icon: 'MailIcon'
+  }
+];
+
+// Componentes de ícones
+const UserIcon = {
+  render() {
+    return h(
+      'svg',
+      {
+        xmlns: 'http://www.w3.org/2000/svg',
+        width: '24',
+        height: '24',
+        viewBox: '0 0 24 24',
+        fill: 'none',
+        stroke: 'currentColor',
+        strokeWidth: '2',
+        strokeLinecap: 'round',
+        strokeLinejoin: 'round',
+      },
+      [
+        h('path', { d: 'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2' }),
+        h('circle', { cx: '12', cy: '7', r: '4' }),
+      ]
+    );
+  },
+};
+
+const InfoIcon = {
+  render() {
+    return h(
+      'svg',
+      {
+        xmlns: 'http://www.w3.org/2000/svg',
+        width: '24',
+        height: '24',
+        viewBox: '0 0 24 24',
+        fill: 'none',
+        stroke: 'currentColor',
+        strokeWidth: '2',
+        strokeLinecap: 'round',
+        strokeLinejoin: 'round',
+      },
+      [
+        h('circle', { cx: '12', cy: '12', r: '10' }),
+        h('line', { x1: '12', y1: '16', x2: '12', y2: '12' }),
+        h('line', { x1: '12', y1: '8', x2: '12.01', y2: '8' }),
+      ]
+    );
+  },
+};
+
+const CodeIcon = {
+  render() {
+    return h(
+      'svg',
+      {
+        xmlns: 'http://www.w3.org/2000/svg',
+        width: '24',
+        height: '24',
+        viewBox: '0 0 24 24',
+        fill: 'none',
+        stroke: 'currentColor',
+        strokeWidth: '2',
+        strokeLinecap: 'round',
+        strokeLinejoin: 'round',
+      },
+      [
+        h('polyline', { points: '16 18 22 12 16 6' }),
+        h('polyline', { points: '8 6 2 12 8 18' }),
+      ]
+    );
+  },
+};
+
+const BriefcaseIcon = {
+  render() {
+    return h(
+      'svg',
+      {
+        xmlns: 'http://www.w3.org/2000/svg',
+        width: '24',
+        height: '24',
+        viewBox: '0 0 24 24',
+        fill: 'none',
+        stroke: 'currentColor',
+        strokeWidth: '2',
+        strokeLinecap: 'round',
+        strokeLinejoin: 'round',
+      },
+      [
+        h('rect', { x: '2', y: '7', width: '20', height: '14', rx: '2', ry: '2' }),
+        h('path', { d: 'M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16' }),
+      ]
+    );
+  },
+};
+
+const FolderIcon = {
+  render() {
+    return h(
+      'svg',
+      {
+        xmlns: 'http://www.w3.org/2000/svg',
+        width: '24',
+        height: '24',
+        viewBox: '0 0 24 24',
+        fill: 'none',
+        stroke: 'currentColor',
+        strokeWidth: '2',
+        strokeLinecap: 'round',
+        strokeLinejoin: 'round',
+      },
+      [
+        h('path', { d: 'M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z' }),
+      ]
+    );
+  },
+};
+
+const MailIcon = {
+  render() {
+    return h(
+      'svg',
+      {
+        xmlns: 'http://www.w3.org/2000/svg',
+        width: '24',
+        height: '24',
+        viewBox: '0 0 24 24',
+        fill: 'none',
+        stroke: 'currentColor',
+        strokeWidth: '2',
+        strokeLinecap: 'round',
+        strokeLinejoin: 'round',
+      },
+      [
+        h('path', { d: 'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z' }),
+        h('polyline', { points: '22,6 12,13 2,6' }),
+      ]
+    );
+  },
+};
 
 onMounted(() => {
   moveIndicator(0)
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isMenuOpen.value) {
+      isMenuOpen.value = false;
+    }
+  });
+
+  // Desabilitar scroll quando o menu estiver aberto
+  watch(isMenuOpen, (newVal) => {
+    if (newVal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Initialize active element
+  setTimeout(() => {
+    activeElement.value = document.querySelector('.nav-link.active');
+  }, 100);
+
+  // Add scroll event listener
+  window.addEventListener('scroll', () => {
+    // Update navbar background
+    isScrolled.value = window.scrollY > 50;
+
+    // Check which section is active
+    checkActiveSection();
+  });
+  checkActiveSection();
+
 })
 </script>
