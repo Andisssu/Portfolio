@@ -1,6 +1,6 @@
 <template>
   <section class="about-section text-white py-16 px-4 relative overflow-hidden" id="sobre">
-    <!-- Background elementos -->
+    <!-- Background elements -->
     <div class="absolute inset-0 z-0">
       <div class="absolute top-[30%] right-[15%] w-64 h-64 rounded-full bg-[#47c5ff] opacity-5 blur-[120px]"></div>
       <div class="absolute bottom-[20%] left-[10%] w-48 h-48 rounded-full bg-[#47c5ff] opacity-5 blur-[100px]"></div>
@@ -22,10 +22,10 @@
       <!-- container sobre -->
       <div
         class="bg-gradient-to-br from-[#121a29] to-[#162339] rounded-2xl p-8 border border-[#ffffff15] shadow-xl relative overflow-hidden">
-        <!-- Background (canto direito) -->
+        <!-- Background element (canto direito) -->
         <div class="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-[#47c5ff] opacity-5 blur-[50px]"></div>
 
-        <!-- bolhas -->
+        <!-- Bubbles -->
         <div
           class="absolute top-6 right-8 w-16 h-16 rounded-full bg-gradient-to-br from-[#121a29] to-[#162339] border border-[#ffffff20] flex items-center justify-center shadow-lg animate-float-slow">
           <img src="@/assets/img/vue.png" alt="Vue.js" class="w-8 h-8 object-contain" />
@@ -46,7 +46,7 @@
           <img src="@/assets/img/electron.png" alt="Electron" class="w-5 h-5 object-contain" />
         </div>
 
-        <!-- Bio texto GSAP animation -->
+        <!-- Bio text GSAP animation -->
         <div class="max-w-3xl pr-20" id="bio-sobre">
           <p class="text-lg text-gray-300 leading-relaxed mb-6" id="split">
             Sou um desenvolvedor com experiência prática em desenvolvimento Front-End, utilizando tecnologias como
@@ -307,7 +307,7 @@ onMounted(() => {
     // Animate the trait items
     const traitItems = document.querySelectorAll('.trait-item');
     gsap.from(traitItems, {
-      opacity: 0, // de 0 para 1
+      opacity: 0,
       y: 20,      // de baixo para cima
       stagger: 0.1,
       duration: 1.8,
@@ -315,7 +315,7 @@ onMounted(() => {
       scrollTrigger: {
         trigger: "#bio-sobre",
         start: "top 60%",
-        end: "bottom 60%", // Ajuste o final da animação
+        end: "bottom 60%",
         toggleActions: "play none none none",
       },
       clearProps: "all" // Remove estilos inline após a animação
@@ -325,18 +325,18 @@ onMounted(() => {
     // Animate the CTA buttons
     const ctaButtons = document.querySelectorAll('#cta-buttons');
     gsap.from(ctaButtons, {
-      opacity: 0, // de 0 para 1
-      y: 20,      // de baixo para cima
+      opacity: 0,
+      y: 20,      
       stagger: 0.2,
       duration: 1.8,
       ease: "power2.out",
       scrollTrigger: {
         trigger: ".trait-item",
         start: "top 60%",
-        end: "bottom 60%", // Ajuste o final da animação
+        end: "bottom 60%",
         toggleActions: "play none none none",
       },
-      clearProps: "all" // Remove estilos inline após a animação
+      clearProps: "all"
     });
   });
 });

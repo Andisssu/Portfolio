@@ -237,12 +237,6 @@ textarea:focus {
 @media (max-width: 640px) {
   .contact-info-container {
     min-width: 80%;
-    /* Ajuste conforme necessário */
   }
 }
 </style>
-
-<script setup>
-// You can add any necessary script logic here
-// For example, form submission handling, validation, etc.
-</script>

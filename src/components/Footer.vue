@@ -47,7 +47,7 @@
             </div> -->
           </div>
   
-          <!-- Links rapidos -->
+          <!-- Links -->
           <div class="flex flex-col">
             <h4 class="text-white font-semibold mb-6 text-lg">Links Rápidos</h4>
             <ul class="space-y-3">
@@ -175,8 +175,7 @@
   .back-to-top {
     box-shadow: 0 0 15px rgba(71, 197, 255, 0.3);
   }
-  
-  /* Responsive adjustments */
+
   @media (max-width: 768px) {
     .footer-main {
       padding-top: 3rem;
@@ -186,8 +185,6 @@
   </style>
   
   <script setup>
-  // You can add any necessary script logic here
-  // For example, smooth scrolling for the "back to top" button
   
   import { onMounted } from 'vue';
   

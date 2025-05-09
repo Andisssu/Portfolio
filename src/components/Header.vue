@@ -1,11 +1,12 @@
 <template>
   <div class="header h-screen w-full" id="perfil">
 
+    <!-- Mobile menu -->
     <div class="mobile-menu-container fixed top-0 right-0 pt-3 h-screen shadow-lg sm:hidden z-[200]">
-      <!-- Checkbox controlador (hidden) -->
+      <!-- Checkbox controller (hidden) -->
       <input type="checkbox" id="burger" class="hidden" v-model="isMenuOpen" />
 
-      <!-- Botão hamburguer -->
+      <!-- hamburguer button -->
       <label
         class="burger-button flex flex-col justify-center items-center w-12 h-12 rounded-full cursor-pointer z-50 transition-all duration-300"
         :class="{ 'is-active': isMenuOpen }" for="burger">
@@ -14,12 +15,12 @@
         <span class="burger-line transition-all duration-300 ease-in-out"></span>
       </label>
 
-      <!-- Overlay de fundo -->
+      <!-- Overlay background -->
       <div class="menu-overlay fixed inset-0 bg-[#0a0c14] transition-all duration-500 backdrop-blur-md z-40"
         :class="{ 'opacity-90': isMenuOpen, 'opacity-0 pointer-events-none': !isMenuOpen }" @click="isMenuOpen = false">
       </div>
 
-      <!-- Menu de navegação -->
+      <!-- Menu -->
       <div
         class="menu-panel fixed inset-y-0 right-0 w-64 sm:w-80 bg-gradient-to-br from-[#121a29] to-[#162339] shadow-xl z-40 transition-all duration-500 ease-in-out transform border-l border-[#ffffff15]"
         :class="{ 'translate-x-0': isMenuOpen, 'translate-x-full': !isMenuOpen }">
@@ -89,6 +90,7 @@
       </div>
     </div>
 
+    <!-- Menu Desktop -->
     <div class="flex items-center justify-between p-4 text-white top-0 left-0 w-full z-100 fixed" id="navbar">
       <div class="flex items-center gap-2">
         <img src="@/assets/img/dev.png" alt="devicon" class="w-10 h-10" />
@@ -115,20 +117,18 @@
 
             <!-- Mobile Menu Button - Only visible on small screens -->
             <div class="md:hidden">
-              <!-- This is where your hamburger menu component would be placed -->
-              <!-- <depois eu ajusto /> -->
+
+              <!-- <depois eutiro la de cima e coloco aqui /> -->
             </div>
           </div>
         </div>
-
-        <!-- Active indicator line -->
 
       </nav>
     </div>
 
     <section class="flex flex-col md:flex-row items-center justify-between h-screen p-24">
 
-      <!-- Informações de Perfil -->
+      <!-- Perfil Information -->
       <div class="text-center md:text-left">
         <h1 class="text-7xl font-bold text-white">Anderson Dantas</h1>
         <h2 class="text-3xl text-gray-400 mt-2" id="article">Desenvolvedor Front-End / Full Stack</h2>
@@ -160,7 +160,7 @@
         </div>
       </div>
 
-      <!-- Imagem de Perfil -->
+      <!-- Perfil Image -->
       <figure class="mb-8 md:mb-0 md:mr-12">
         <img src="@/assets/img/perfil.png" alt="Foto de Anderson Dantas" class="w-lg h-lg object-cover">
       </figure>
@@ -169,7 +169,7 @@
 </template>
 
 <style scoped>
-/* texto gradiente animado*/
+
 @property --＠color-1 {
   syntax: "<color>";
   inherits: false;
@@ -299,7 +299,6 @@
 <script setup>
 import { ref, onMounted, watch, computed } from 'vue'
 
-// Navigation items
 const navItems = [
   { label: 'Perfil', href: '#perfil', active: false },
   { label: 'Sobre', href: '#sobre', active: false },
@@ -314,15 +313,12 @@ const isScrolled = ref(false);
 const activeSection = ref('#perfil');
 const activeElement = ref(null);
 
-// Computed style for the active indicator
-
-
 // Scroll to section function
 const scrollToSection = (sectionId) => {
   const element = document.querySelector(sectionId);
   if (element) {
     window.scrollTo({
-      top: element.offsetTop - 80, // Adjust for navbar height
+      top: element.offsetTop - 80,
       behavior: 'smooth'
     });
 
@@ -373,10 +369,8 @@ watch(activeSection, (newSection) => {
   updateActiveNavItem(newSection);
 });
 
-// Estado do menu
 const isMenuOpen = ref(false);
 
-// Itens do menu com ícones
 const menuItemsmobi = [
   {
     label: 'Perfil',
@@ -416,144 +410,143 @@ const menuItemsmobi = [
   }
 ];
 
-// Componentes de ícones
-const UserIcon = {
-  render() {
-    return h(
-      'svg',
-      {
-        xmlns: 'http://www.w3.org/2000/svg',
-        width: '24',
-        height: '24',
-        viewBox: '0 0 24 24',
-        fill: 'none',
-        stroke: 'currentColor',
-        strokeWidth: '2',
-        strokeLinecap: 'round',
-        strokeLinejoin: 'round',
-      },
-      [
-        h('path', { d: 'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2' }),
-        h('circle', { cx: '12', cy: '7', r: '4' }),
-      ]
-    );
-  },
-};
+// const UserIcon = {
+//   render() {
+//     return h(
+//       'svg',
+//       {
+//         xmlns: 'http://www.w3.org/2000/svg',
+//         width: '24',
+//         height: '24',
+//         viewBox: '0 0 24 24',
+//         fill: 'none',
+//         stroke: 'currentColor',
+//         strokeWidth: '2',
+//         strokeLinecap: 'round',
+//         strokeLinejoin: 'round',
+//       },
+//       [
+//         h('path', { d: 'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2' }),
+//         h('circle', { cx: '12', cy: '7', r: '4' }),
+//       ]
+//     );
+//   },
+// };
 
-const InfoIcon = {
-  render() {
-    return h(
-      'svg',
-      {
-        xmlns: 'http://www.w3.org/2000/svg',
-        width: '24',
-        height: '24',
-        viewBox: '0 0 24 24',
-        fill: 'none',
-        stroke: 'currentColor',
-        strokeWidth: '2',
-        strokeLinecap: 'round',
-        strokeLinejoin: 'round',
-      },
-      [
-        h('circle', { cx: '12', cy: '12', r: '10' }),
-        h('line', { x1: '12', y1: '16', x2: '12', y2: '12' }),
-        h('line', { x1: '12', y1: '8', x2: '12.01', y2: '8' }),
-      ]
-    );
-  },
-};
+// const InfoIcon = {
+//   render() {
+//     return h(
+//       'svg',
+//       {
+//         xmlns: 'http://www.w3.org/2000/svg',
+//         width: '24',
+//         height: '24',
+//         viewBox: '0 0 24 24',
+//         fill: 'none',
+//         stroke: 'currentColor',
+//         strokeWidth: '2',
+//         strokeLinecap: 'round',
+//         strokeLinejoin: 'round',
+//       },
+//       [
+//         h('circle', { cx: '12', cy: '12', r: '10' }),
+//         h('line', { x1: '12', y1: '16', x2: '12', y2: '12' }),
+//         h('line', { x1: '12', y1: '8', x2: '12.01', y2: '8' }),
+//       ]
+//     );
+//   },
+// };
 
-const CodeIcon = {
-  render() {
-    return h(
-      'svg',
-      {
-        xmlns: 'http://www.w3.org/2000/svg',
-        width: '24',
-        height: '24',
-        viewBox: '0 0 24 24',
-        fill: 'none',
-        stroke: 'currentColor',
-        strokeWidth: '2',
-        strokeLinecap: 'round',
-        strokeLinejoin: 'round',
-      },
-      [
-        h('polyline', { points: '16 18 22 12 16 6' }),
-        h('polyline', { points: '8 6 2 12 8 18' }),
-      ]
-    );
-  },
-};
+// const CodeIcon = {
+//   render() {
+//     return h(
+//       'svg',
+//       {
+//         xmlns: 'http://www.w3.org/2000/svg',
+//         width: '24',
+//         height: '24',
+//         viewBox: '0 0 24 24',
+//         fill: 'none',
+//         stroke: 'currentColor',
+//         strokeWidth: '2',
+//         strokeLinecap: 'round',
+//         strokeLinejoin: 'round',
+//       },
+//       [
+//         h('polyline', { points: '16 18 22 12 16 6' }),
+//         h('polyline', { points: '8 6 2 12 8 18' }),
+//       ]
+//     );
+//   },
+// };
 
-const BriefcaseIcon = {
-  render() {
-    return h(
-      'svg',
-      {
-        xmlns: 'http://www.w3.org/2000/svg',
-        width: '24',
-        height: '24',
-        viewBox: '0 0 24 24',
-        fill: 'none',
-        stroke: 'currentColor',
-        strokeWidth: '2',
-        strokeLinecap: 'round',
-        strokeLinejoin: 'round',
-      },
-      [
-        h('rect', { x: '2', y: '7', width: '20', height: '14', rx: '2', ry: '2' }),
-        h('path', { d: 'M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16' }),
-      ]
-    );
-  },
-};
+// const BriefcaseIcon = {
+//   render() {
+//     return h(
+//       'svg',
+//       {
+//         xmlns: 'http://www.w3.org/2000/svg',
+//         width: '24',
+//         height: '24',
+//         viewBox: '0 0 24 24',
+//         fill: 'none',
+//         stroke: 'currentColor',
+//         strokeWidth: '2',
+//         strokeLinecap: 'round',
+//         strokeLinejoin: 'round',
+//       },
+//       [
+//         h('rect', { x: '2', y: '7', width: '20', height: '14', rx: '2', ry: '2' }),
+//         h('path', { d: 'M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16' }),
+//       ]
+//     );
+//   },
+// };
 
-const FolderIcon = {
-  render() {
-    return h(
-      'svg',
-      {
-        xmlns: 'http://www.w3.org/2000/svg',
-        width: '24',
-        height: '24',
-        viewBox: '0 0 24 24',
-        fill: 'none',
-        stroke: 'currentColor',
-        strokeWidth: '2',
-        strokeLinecap: 'round',
-        strokeLinejoin: 'round',
-      },
-      [
-        h('path', { d: 'M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z' }),
-      ]
-    );
-  },
-};
+// const FolderIcon = {
+//   render() {
+//     return h(
+//       'svg',
+//       {
+//         xmlns: 'http://www.w3.org/2000/svg',
+//         width: '24',
+//         height: '24',
+//         viewBox: '0 0 24 24',
+//         fill: 'none',
+//         stroke: 'currentColor',
+//         strokeWidth: '2',
+//         strokeLinecap: 'round',
+//         strokeLinejoin: 'round',
+//       },
+//       [
+//         h('path', { d: 'M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z' }),
+//       ]
+//     );
+//   },
+// };
 
-const MailIcon = {
-  render() {
-    return h(
-      'svg',
-      {
-        xmlns: 'http://www.w3.org/2000/svg',
-        width: '24',
-        height: '24',
-        viewBox: '0 0 24 24',
-        fill: 'none',
-        stroke: 'currentColor',
-        strokeWidth: '2',
-        strokeLinecap: 'round',
-        strokeLinejoin: 'round',
-      },
-      [
-        h('path', { d: 'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z' }),
-        h('polyline', { points: '22,6 12,13 2,6' }),
-      ]
-    );
-  },
-};
+// const MailIcon = {
+//   render() {
+//     return h(
+//       'svg',
+//       {
+//         xmlns: 'http://www.w3.org/2000/svg',
+//         width: '24',
+//         height: '24',
+//         viewBox: '0 0 24 24',
+//         fill: 'none',
+//         stroke: 'currentColor',
+//         strokeWidth: '2',
+//         strokeLinecap: 'round',
+//         strokeLinejoin: 'round',
+//       },
+//       [
+//         h('path', { d: 'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z' }),
+//         h('polyline', { points: '22,6 12,13 2,6' }),
+//       ]
+//     );
+//   },
+// };
 
 onMounted(() => {
 
@@ -563,7 +556,7 @@ onMounted(() => {
     }
   });
 
-  // Desabilitar scroll quando o menu estiver aberto
+  // Disable scrolling when menu is open
   watch(isMenuOpen, (newVal) => {
     if (newVal) {
       document.body.style.overflow = 'hidden';

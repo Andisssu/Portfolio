@@ -1,4 +1,3 @@
-<!-- filepath: c:\Users\netod\OneDrive\Documentos\GitHub\Portfolio\src\components\MeshBackground.vue -->
 <template>
   <div class="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24" id="background">
     <canvas id="meshCanvas"></canvas>

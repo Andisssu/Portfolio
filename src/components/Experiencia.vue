@@ -200,7 +200,6 @@ const extractTechnologies = (details) => {
   height: fit-content;
 }
 
-/* Scrollbar styling for the timeline navigation on mobile */
 .timeline-nav::-webkit-scrollbar {
   height: 4px;
 }

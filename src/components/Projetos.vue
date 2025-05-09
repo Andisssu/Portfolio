@@ -48,7 +48,7 @@
         Destaque
       </div> -->
 
-            <!-- imagem com canvas -->
+            <!-- Canvas and image -->
             <div class="relative h-48 overflow-hidden group" style="--active-color: #e0f2fe">
               <!-- pixel-canvas (hover effect background) -->
               <pixel-canvas class="absolute inset-0 z-10" data-gap="10" data-speed="25"
@@ -168,8 +168,6 @@ import avasoft from "@/assets/img/projetos/avasoft.png";
 import portfolio from "@/assets/img/projetos/portfolio.png";
 import obras from "@/assets/img/projetos/obras.png";
 
-
-// Project categories
 const categories = [
   { id: 'all', name: 'Todos' },
   { id: 'web', name: 'Web' },
