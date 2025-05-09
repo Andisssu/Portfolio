@@ -97,7 +97,7 @@
                 </div>
                 <div>
                   <h4 class="text-sm text-gray-400 mb-1">Email</h4>
-                  <a href="mailto:seu@email.com"
+                  <a 
                     class="text-white hover:text-[#47c5ff] transition-all duration-300">netodantas3@gmail.com</a>
                 </div>
               </div>
@@ -117,7 +117,7 @@
                 </div>
                 <div>
                   <h4 class="text-sm text-gray-400 mb-1">Telefone</h4>
-                  <a href="tel:+5500000000000" class="text-white hover:text-[#47c5ff] transition-all duration-300">(68)
+                  <a href="https://wa.me/5568992192977" target="_blank" rel="noopener noreferrer" class="text-white hover:text-[#47c5ff] transition-all duration-300">(68)
                     99219-2977</a>
                 </div>
               </div>
