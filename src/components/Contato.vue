@@ -1,6 +1,7 @@
 <template>
   <section
-    class="contact-section text-white py-16 px-4 relative overflow-hidden min-h-screen flex flex-col items-center justify-center" id="contato">
+    class="contact-section text-white py-16 px-4 relative overflow-hidden min-h-screen flex flex-col items-center justify-center"
+    id="contato">
     <!-- Background elements -->
     <div class="absolute inset-0 z-0">
       <div class="absolute top-[10%] right-[10%] w-64 h-64 rounded-full bg-[#47c5ff] opacity-5 blur-[100px]"></div>
@@ -17,9 +18,9 @@
         Contato
       </h2>
       <div class="w-20 h-1 bg-gradient-to-r from-[#47c5ff] to-[#0098df] rounded-full mb-4"></div>
-      <p class="text-center text-gray-300 max-w-md">
+      <!-- <p class="text-center text-gray-300 max-w-md">
         Vamos trabalhar juntos? Entre em contato através de um dos canais abaixo.
-      </p>
+      </p> -->
     </div>
 
     <!-- Contact content -->
@@ -127,8 +128,10 @@
           <div class="social-links-container">
             <h4 class="text-lg font-medium mb-5 text-white">Redes Sociais</h4>
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 ">
+
               <!-- WhatsApp -->
-              <a href="#" class="social-link group flex flex-col items-center">
+              <a href="https://wa.me/5568992192977" target="_blank" rel="noopener noreferrer"
+                class="social-link group flex flex-col items-center">
                 <div
                   class="w-14 h-14 rounded-full bg-gradient-to-br from-[#121a29] to-[#162339] border border-[#ffffff15] group-hover:border-[#47c5ff40] flex items-center justify-center mb-2 transition-all duration-300 transform group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-[#47c5ff]/10">
                   <div
@@ -140,7 +143,7 @@
               </a>
 
               <!-- Gmail -->
-              <a href="#" class="social-link group flex flex-col items-center">
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=netodantas3@gmail.com" target="_blank" rel="noopener noreferrer" class="social-link group flex flex-col items-center">
                 <div
                   class="w-14 h-14 rounded-full bg-gradient-to-br from-[#121a29] to-[#162339] border border-[#ffffff15] group-hover:border-[#47c5ff40] flex items-center justify-center mb-2 transition-all duration-300 transform group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-[#47c5ff]/10">
                   <div
@@ -152,7 +155,7 @@
               </a>
 
               <!-- LinkedIn -->
-              <a href="#" class="social-link group flex flex-col items-center">
+              <a href="https://www.linkedin.com/in/andersondantass/" target="_blank" rel="noopener noreferrer" class="social-link group flex flex-col items-center">
                 <div
                   class="w-14 h-14 rounded-full bg-gradient-to-br from-[#121a29] to-[#162339] border border-[#ffffff15] group-hover:border-[#47c5ff40] flex items-center justify-center mb-2 transition-all duration-300 transform group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-[#47c5ff]/10">
                   <div
@@ -164,7 +167,7 @@
               </a>
 
               <!-- GitHub -->
-              <a href="#" class="social-link group flex flex-col items-center">
+              <a href="https://github.com/Andisssu" target="_blank" rel="noopener noreferrer" class="social-link group flex flex-col items-center">
                 <div
                   class="w-14 h-14 rounded-full bg-gradient-to-br from-[#121a29] to-[#162339] border border-[#ffffff15] group-hover:border-[#47c5ff40] flex items-center justify-center mb-2 transition-all duration-300 transform group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-[#47c5ff]/10">
                   <div
@@ -233,7 +236,8 @@ textarea:focus {
 
 @media (max-width: 640px) {
   .contact-info-container {
-    min-width: 80%; /* Ajuste conforme necessário */
+    min-width: 80%;
+    /* Ajuste conforme necessário */
   }
 }
 </style>

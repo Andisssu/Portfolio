@@ -22,8 +22,8 @@
             <p class="text-gray-400 mb-6 max-w-xs">
               Desenvolvedor Full Stack.
             </p>
-            <div class="flex space-x-4">
-              <!-- Social icons -->
+            <!-- <div class="flex space-x-4">
+
               <a href="#" class="social-icon-link">
                 <div class="w-10 h-10 rounded-full bg-[#121a29] border border-[#ffffff15] hover:border-[#47c5ff40] flex items-center justify-center transition-all duration-300 hover:bg-[#47c5ff20]">
                   <img src="@/assets/img/github.png" alt="GitHub" class="w-5 h-5 object-contain" />
@@ -44,7 +44,7 @@
                   <img src="@/assets/img/whatsapp.png" alt="Email" class="w-5 h-5 object-contain" />
                 </div>
               </a>
-            </div>
+            </div> -->
           </div>
   
           <!-- Links rapidos -->
