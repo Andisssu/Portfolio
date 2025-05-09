@@ -120,11 +120,7 @@
         </div>
 
         <!-- Active indicator line -->
-        <div class="active-indicator-container absolute bottom-0 left-0 w-full h-[2px] bg-transparent">
-          <div
-            class="active-indicator h-full bg-gradient-to-r from-[#47c5ff] to-[#0098df] transition-all duration-300 ease-out"
-            :style="indicatorStyle"></div>
-        </div>
+
       </nav>
     </div>
 
@@ -302,7 +298,7 @@
 </style>
 
 <script setup>
-import { ref, reactive, onMounted, nextTick, watch, computed } from 'vue'
+import { ref, onMounted, watch, computed } from 'vue'
 
 // Navigation items
 const navItems = [
@@ -320,17 +316,7 @@ const activeSection = ref('#perfil');
 const activeElement = ref(null);
 
 // Computed style for the active indicator
-const indicatorStyle = computed(() => {
-  if (!activeElement.value) return { width: '0', transform: 'translateX(0)' };
 
-  const { width, left } = activeElement.value.getBoundingClientRect();
-  const navLeft = document.querySelector('.desktop-nav ul').getBoundingClientRect().left;
-
-  return {
-    width: `${width}px`,
-    transform: `translateX(${left - navLeft}px)`
-  };
-});
 
 // Scroll to section function
 const scrollToSection = (sectionId) => {
@@ -571,7 +557,6 @@ const MailIcon = {
 };
 
 onMounted(() => {
-  moveIndicator(0)
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && isMenuOpen.value) {
