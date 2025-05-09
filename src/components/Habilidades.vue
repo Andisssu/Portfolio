@@ -98,14 +98,11 @@
     box-shadow: 0 0 20px rgba(71, 197, 255, 0.2);
 }
 
-button {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
+
 </style>
 
 <script setup>
-import { onMounted, ref, computed } from "vue";
+import { onMounted, ref, computed, nextTick } from "vue";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -204,30 +201,28 @@ const filterCategory = (category) => {
   });
 };
 
-onMounted(() => {
-  // Initial animation for category filters
-  const filterButtons = categoryFilters.value.querySelectorAll('button');
-  gsap.from(filterButtons, {
-    opacity: 1,
-    y: -20,
-    stagger: 0.1,
-    duration: 0.8,
-    ease: "power2.out",
-    delay: 0.3
-  });
+onMounted(async () => {
+  await nextTick(); // Aguarda renderização completa
 
-  // Initial animation for skill items
+  // const filterButtons = categoryFilters.value.querySelectorAll('button');
+  // gsap.from(filterButtons, {
+  //   opacity: 1,
+  //   y: -20,
+  //   stagger: 0.1,
+  //   duration: 0.8,
+  //   ease: "power2.out",
+  //   delay: 0.3
+  // });
+
   const skillItems = skillsGrid.value.querySelectorAll('[data-skill-item]');
-  
-  // Create a staggered entrance animation
   gsap.from(skillItems, {
     opacity: 0.9,
     y: 20,
     scale: 1,
     duration: 0.8,
     stagger: {
-      amount: 1.5, // Total stagger time
-      grid: [5, 5], // Approximate grid size
+      amount: 1.5,
+      grid: [5, 5],
       from: "center"
     },
     ease: "power3.out",
@@ -235,25 +230,11 @@ onMounted(() => {
       trigger: skillsSection.value,
       start: "top 70%",
       toggleActions: "play none none none"
-    }
+    },
+    clearProps: "all"
   });
-  
-//   // Add floating animation to some random skill items for visual interest
-//   skillItems.forEach((item, index) => {
-//     if (index % 3 === 0) { // Apply to every third item
-//       gsap.to(item, {
-//         y: "10px",
-//         duration: 2 + Math.random(),
-//         repeat: -1,
-//         yoyo: true,
-//         ease: "sine.inOut",
-//         delay: Math.random() * 2
-//       });
-//     }
-//   });
-  
-  // Animate skill proficiency bars
-  const proficiencyBars = skillsGrid.value.querySelectorAll('.skill-card .mt-2 div');
+
+  const proficiencyBars = skillsGrid.value.querySelectorAll('.skill-bar');
   gsap.from(proficiencyBars, {
     width: 0,
     duration: 1.5,
@@ -264,7 +245,10 @@ onMounted(() => {
       start: "top 60%",
       toggleActions: "play none none none",
       scrub: false,
-    }
+    },
+    clearProps: "all"
   });
+
+  ScrollTrigger.refresh();
 });
 </script>
