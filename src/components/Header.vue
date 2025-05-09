@@ -39,7 +39,7 @@
           <!-- Lista de navegação -->
           <nav class="menu-nav flex-grow">
             <ul class="space-y-1">
-              <li v-for="(item, index) in menuItemsmobi" :key="index" :style="{ transitionDelay: `${index * 50}ms` }"
+              <li v-for="(item, index) in menuItemsmobi" :key="index" :style="{ transitionDelay: `${item.delay}ms` }"
                 class="menu-item">
                 <a :href="item.href"
                   class="menu-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:text-white transition-all duration-300 group"
@@ -169,7 +169,6 @@
 </template>
 
 <style scoped>
-
 @property --＠color-1 {
   syntax: "<color>";
   inherits: false;
@@ -294,6 +293,26 @@
 .active-link .w-8 {
   background: rgba(71, 197, 255, 0.2);
 }
+
+/* Adicione uma animação para o botão hambúrguer */
+.burger-button {
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.burger-button:hover {
+  transform: scale(1.1);
+  background: rgba(71, 197, 255, 0.3);
+}
+
+/* Adicione um efeito de escala para os ícones do menu */
+.menu-link .w-8 {
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.menu-link:hover .w-8 {
+  transform: scale(1.2);
+  background: rgba(71, 197, 255, 0.3);
+}
 </style>
 
 <script setup>
@@ -372,181 +391,13 @@ watch(activeSection, (newSection) => {
 const isMenuOpen = ref(false);
 
 const menuItemsmobi = [
-  {
-    label: 'Perfil',
-    href: '#perfil',
-    active: true,
-    icon: 'UserIcon'
-  },
-  {
-    label: 'Sobre',
-    href: '#sobre',
-    active: false,
-    icon: 'InfoIcon'
-  },
-  {
-    label: 'Habilidades',
-    href: '#habilidades',
-    active: false,
-    icon: 'CodeIcon'
-  },
-  {
-    label: 'Expêriencia',
-    href: '#experiencia',
-    active: false,
-    icon: 'BriefcaseIcon'
-  },
-  {
-    label: 'Projetos',
-    href: '#projetos',
-    active: false,
-    icon: 'FolderIcon'
-  },
-  {
-    label: 'Contato',
-    href: '#contato',
-    active: false,
-    icon: 'MailIcon'
-  }
+  { label: 'Perfil', href: '#perfil', active: true, icon: 'UserIcon', delay: 0 },
+  { label: 'Sobre', href: '#sobre', active: false, icon: 'InfoIcon', delay: 50 },
+  { label: 'Habilidades', href: '#habilidades', active: false, icon: 'CodeIcon', delay: 100 },
+  { label: 'Expêriencia', href: '#experiencia', active: false, icon: 'BriefcaseIcon', delay: 150 },
+  { label: 'Projetos', href: '#projetos', active: false, icon: 'FolderIcon', delay: 200 },
+  { label: 'Contato', href: '#contato', active: false, icon: 'MailIcon', delay: 250 }
 ];
-
-// const UserIcon = {
-//   render() {
-//     return h(
-//       'svg',
-//       {
-//         xmlns: 'http://www.w3.org/2000/svg',
-//         width: '24',
-//         height: '24',
-//         viewBox: '0 0 24 24',
-//         fill: 'none',
-//         stroke: 'currentColor',
-//         strokeWidth: '2',
-//         strokeLinecap: 'round',
-//         strokeLinejoin: 'round',
-//       },
-//       [
-//         h('path', { d: 'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2' }),
-//         h('circle', { cx: '12', cy: '7', r: '4' }),
-//       ]
-//     );
-//   },
-// };
-
-// const InfoIcon = {
-//   render() {
-//     return h(
-//       'svg',
-//       {
-//         xmlns: 'http://www.w3.org/2000/svg',
-//         width: '24',
-//         height: '24',
-//         viewBox: '0 0 24 24',
-//         fill: 'none',
-//         stroke: 'currentColor',
-//         strokeWidth: '2',
-//         strokeLinecap: 'round',
-//         strokeLinejoin: 'round',
-//       },
-//       [
-//         h('circle', { cx: '12', cy: '12', r: '10' }),
-//         h('line', { x1: '12', y1: '16', x2: '12', y2: '12' }),
-//         h('line', { x1: '12', y1: '8', x2: '12.01', y2: '8' }),
-//       ]
-//     );
-//   },
-// };
-
-// const CodeIcon = {
-//   render() {
-//     return h(
-//       'svg',
-//       {
-//         xmlns: 'http://www.w3.org/2000/svg',
-//         width: '24',
-//         height: '24',
-//         viewBox: '0 0 24 24',
-//         fill: 'none',
-//         stroke: 'currentColor',
-//         strokeWidth: '2',
-//         strokeLinecap: 'round',
-//         strokeLinejoin: 'round',
-//       },
-//       [
-//         h('polyline', { points: '16 18 22 12 16 6' }),
-//         h('polyline', { points: '8 6 2 12 8 18' }),
-//       ]
-//     );
-//   },
-// };
-
-// const BriefcaseIcon = {
-//   render() {
-//     return h(
-//       'svg',
-//       {
-//         xmlns: 'http://www.w3.org/2000/svg',
-//         width: '24',
-//         height: '24',
-//         viewBox: '0 0 24 24',
-//         fill: 'none',
-//         stroke: 'currentColor',
-//         strokeWidth: '2',
-//         strokeLinecap: 'round',
-//         strokeLinejoin: 'round',
-//       },
-//       [
-//         h('rect', { x: '2', y: '7', width: '20', height: '14', rx: '2', ry: '2' }),
-//         h('path', { d: 'M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16' }),
-//       ]
-//     );
-//   },
-// };
-
-// const FolderIcon = {
-//   render() {
-//     return h(
-//       'svg',
-//       {
-//         xmlns: 'http://www.w3.org/2000/svg',
-//         width: '24',
-//         height: '24',
-//         viewBox: '0 0 24 24',
-//         fill: 'none',
-//         stroke: 'currentColor',
-//         strokeWidth: '2',
-//         strokeLinecap: 'round',
-//         strokeLinejoin: 'round',
-//       },
-//       [
-//         h('path', { d: 'M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z' }),
-//       ]
-//     );
-//   },
-// };
-
-// const MailIcon = {
-//   render() {
-//     return h(
-//       'svg',
-//       {
-//         xmlns: 'http://www.w3.org/2000/svg',
-//         width: '24',
-//         height: '24',
-//         viewBox: '0 0 24 24',
-//         fill: 'none',
-//         stroke: 'currentColor',
-//         strokeWidth: '2',
-//         strokeLinecap: 'round',
-//         strokeLinejoin: 'round',
-//       },
-//       [
-//         h('path', { d: 'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z' }),
-//         h('polyline', { points: '22,6 12,13 2,6' }),
-//       ]
-//     );
-//   },
-// };
 
 onMounted(() => {
 

@@ -115,8 +115,8 @@ import freelancerImg from '@/assets/img/freelancer.png'
 const selected = ref('UFAC')
 
 const options = [
-  { id: 'wbacademy', label: 'WebAcademy', icon: ufacImg },
   { id: 'UFAC', label: 'UFAC', icon: ufacImg },
+  { id: 'wbacademy', label: 'WebAcademy', icon: ufacImg },
   { id: 'freelancer', label: 'Freelancer', icon: freelancerImg },
 ]
 
