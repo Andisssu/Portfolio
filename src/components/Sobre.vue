@@ -158,7 +158,7 @@
             Entre em contato
           </a>
 
-          <a href="@/assets/pdf/Currículo_Anderson_Dantas.pdf" download="Currículo_Anderson_Dantas.pdf"
+          <a href="/public/pdf/Currículo_Anderson_Dantas.pdf" download="Currículo_Anderson_Dantas.pdf"
             class="px-6 py-3 bg-transparent border border-[#47c5ff] rounded-full text-[#47c5ff] font-medium hover:bg-[#47c5ff20] transition-all duration-300 flex items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
               stroke="currentColor">
@@ -326,7 +326,7 @@ onMounted(() => {
     const ctaButtons = document.querySelectorAll('#cta-buttons');
     gsap.from(ctaButtons, {
       opacity: 0,
-      y: 20,      
+      y: 20,
       stagger: 0.2,
       duration: 1.8,
       ease: "power2.out",
