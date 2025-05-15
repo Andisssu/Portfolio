@@ -43,8 +43,9 @@
             <div
               class="absolute inset-0 rounded-2xl bg-[#47c5ff] opacity-0 blur-md group-hover:opacity-20 transition-all duration-300">
             </div>
-            <img :src="skill.img" :alt="skill.nome"
-              class="relative z-10 w-10 h-10 object-contain transition-all duration-300 group-hover:scale-110" />
+            <img :src="skill.img" :alt="skill.nome" :class="['relative z-10 w-10 h-10 object-contain transition-all duration-300 group-hover:scale-110',
+              skill.nome === 'nodeImg' ? 'node-img' : '', skill.nome === 'postgreImg' ? 'postgre-img' : ''
+            ]" />
           </div>
 
           <!-- Skill name -->
@@ -122,6 +123,8 @@ import djangoImg from "@/assets/img/django.png";
 import pythonImg from "@/assets/img/python.png";
 import wordpressImg from "@/assets/img/wordpress.png";
 import postgreImg from "@/assets/img/postgre.png";
+import reactImg from "@/assets/img/react.png";
+import nodeImg from "@/assets/img/node.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -150,7 +153,9 @@ const skills = [
   { nome: "Django", img: djangoImg, category: 'backend', proficiency: 75 },
   { nome: "Python", img: pythonImg, category: 'backend', proficiency: 85 },
   { nome: "WordPress", img: wordpressImg, category: 'frontend', proficiency: 80 },
-  { nome: "PostgreSQL", img: postgreImg, category: 'database', proficiency: 75 }
+  { nome: "PostgreSQL", img: postgreImg, category: 'database', proficiency: 75 },
+  { nome: "React", img: reactImg, category: 'frontend', proficiency: 0 },
+  { nome: "Node.js", img: nodeImg, category: 'backend', proficiency: 0 },
 ];
 
 // Filter skills based on active category
