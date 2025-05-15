@@ -44,7 +44,7 @@
               class="absolute inset-0 rounded-2xl bg-[#47c5ff] opacity-0 blur-md group-hover:opacity-20 transition-all duration-300">
             </div>
             <img :src="skill.img" :alt="skill.nome" :class="['relative z-10 w-10 h-10 object-contain transition-all duration-300 group-hover:scale-110',
-              skill.nome === 'nodeImg' ? 'node-img' : '', skill.nome === 'postgreImg' ? 'postgre-img' : ''
+              skill.nome === 'Node.js' ? 'node-img' : '', skill.nome === 'PostgreSQL' ? 'postgre-img' : ''
             ]" />
           </div>
 
@@ -100,6 +100,11 @@
 
 .skill-card:hover .skill-icon-wrapper {
   box-shadow: 0 0 20px rgba(71, 197, 255, 0.2);
+}
+
+.node-img, .postgre-img {
+  width: 75px;
+  height: 75px;
 }
 </style>
 
