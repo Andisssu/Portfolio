@@ -159,8 +159,8 @@ const skills = [
   { nome: "Python", img: pythonImg, category: 'backend', proficiency: 85 },
   { nome: "WordPress", img: wordpressImg, category: 'frontend', proficiency: 80 },
   { nome: "PostgreSQL", img: postgreImg, category: 'database', proficiency: 75 },
-  { nome: "React", img: reactImg, category: 'frontend', proficiency: 0 },
-  { nome: "Node.js", img: nodeImg, category: 'backend', proficiency: 0 },
+  // { nome: "React", img: reactImg, category: 'frontend', proficiency: 0 },
+  // { nome: "Node.js", img: nodeImg, category: 'backend', proficiency: 0 },
 ];
 
 // Filter skills based on active category
