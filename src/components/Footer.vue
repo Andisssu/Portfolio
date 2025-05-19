@@ -102,7 +102,7 @@
                 </div>
                 <div>
                   <h5 class="text-sm text-gray-400 mb-1">Email</h5>
-                  <a href="mailto:seu@email.com" class="text-white hover:text-[#47c5ff] transition-all duration-300">netodantas3@email.com</a>
+                  <a href="mailto:seu@email.com" class="text-white hover:text-[#47c5ff] transition-all duration-300">netodantas3@gmail.com</a>
                 </div>
               </li>
               <li class="flex items-start gap-3">
