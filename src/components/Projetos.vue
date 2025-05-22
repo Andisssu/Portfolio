@@ -184,7 +184,7 @@ const projects = [
     title: 'Sistema de Gerenciamento de Projetos e Setores para SEAGRI',
     description: 'Sistema desenvolvido para a Secretaria de Estado da Agricultura (SEAGRI) para gerenciar projetos e setores internos.',
     image: deagro,
-    githubLink: 'https://github.com/webacademyufac/hands-on-t3-moto-e',
+    githubLink: 'https://github.com/Andisssu/hands-on-t3-moto-e',
     demoLink: '#',
     technologies: ['Angular', 'Spring Boot', 'MySQL', 'Java', 'Figma', 'Html', 'CSS', 'Bootstrap'],
     category: 'web',
